@@ -1,8 +1,8 @@
 defmodule Extatic.Reporters.Logs.Json.Console do
   use GenEvent
 
-  def init(__MODULE__) do
-    {:ok, %{config: get_config}}
+  def init({__MODULE__, name}) do
+    {:ok, %{config: get_config(name)}}
   end
 
   def handle_event({level, _group_lead, {Logger, msg, ts, mdata}}, %{config: %{metadata: metadata, level: min_level}} = state) do
@@ -20,8 +20,8 @@ defmodule Extatic.Reporters.Logs.Json.Console do
     {:ok, state}
   end
 
-  defp get_config do
-    Application.get_env(:logger, :json_logger, []) |> Enum.into(%{})
+  defp get_config(name) do
+    Application.get_env(:logger, name, []) |> Enum.into(%{})
   end
 
   defp timestamp({{yr, mth, day},{hr, min, sec, ms}}) do
