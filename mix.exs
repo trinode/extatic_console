@@ -7,6 +7,8 @@ defmodule ExtaticConsole.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     description: description(),
+     package: package(),
      deps: deps()]
   end
 
@@ -27,6 +29,25 @@ defmodule ExtaticConsole.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:poison, "~> 2.0"}]
+    [{:poison, "~> 2.0"},
+     {:extatic, "0.1.0"}]
+  end
+
+  defp description do
+    """
+    A console output library for Extatic, logs metrics and events to the console.
+    Mostly for development purposes, but also includes a JSON logger that can be used
+    with log parsing services.
+    """
+  end
+
+  defp package do
+     [
+       name: :extatic_console,
+       files: ["lib", "mix.exs", "README*", "LICENSE*"],
+       maintainers: ["Anthony Graham"],
+       licenses: ["Apache 2.0"],
+       links: %{"GitHub" => "https://github.com/trinode/extatic_console"}
+     ]
   end
 end
