@@ -3,7 +3,7 @@ defmodule ExtaticConsole.Mixfile do
 
   def project do
     [app: :extatic_console,
-     version: "0.1.0",
+     version: "0.2.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -30,7 +30,7 @@ defmodule ExtaticConsole.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:poison, "~> 2.0"},
-     {:extatic, "0.1.0"}]
+     {:extatic, "0.2.0"}]
   end
 
   defp description do
