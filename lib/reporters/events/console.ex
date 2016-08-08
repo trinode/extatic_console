@@ -31,6 +31,8 @@ defmodule Extatic.Reporters.Events.Console do
      handle_unknown_events(remaining)
   end
 
+  def process_events(_), do: nil
+
   def list_events(title, events, level) when length(events) > 0 do
     show_items(events, level)
   end
